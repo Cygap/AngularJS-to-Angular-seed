@@ -34,18 +34,6 @@
     transpiler: 'plugin-babel',
 	// packages tells the System loader how to load when no filename and/or no extension
     packages: {
-      app: {
-        defaultExtension: 'js',
-        meta: {
-          './*.js': {
-            loader: 'systemjs-angular-loader.js'
-          },
-		  '*.mjs': {
-			babelOptions: {
-			es2015: false
-		  }
-        }
-      },
       'rxjs': {
         defaultExtension: 'js',
         format: 'cjs',
@@ -55,6 +43,14 @@
         defaultExtension: 'js',
         format: 'cjs',
         main: 'index.js'
+      },
+	  
+	  meta: {
+       '*.mjs': {
+		  babelOptions: {
+			es2015: false
+		  }
+        }
       }
     }
   });

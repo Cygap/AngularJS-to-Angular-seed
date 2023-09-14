@@ -8,6 +8,8 @@
     "experimentalDecorators": true,
     "lib": [ "es2015", "dom" ],
 	"skipLibCheck": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+	"suppressImplicitAnyIndexErrors": true,
+	"ignoreDeprecations": "5.0"
   }
 }
