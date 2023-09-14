@@ -1,5 +1,5 @@
 {
-  "name": "angular-quickstart",
+  "name": "angularJS-to-Angular-Seed",
   "version": "1.0.0",
   "description": "QuickStart package.json from the documentation, supplemented with testing support",
   "scripts": {
@@ -21,7 +21,7 @@
     "lint": "tslint ./src/**/*.ts -t verbose"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alexander Sudarikov",
   "license": "MIT",
   "dependencies": {
     "@angular/common": "^16.2.5",
