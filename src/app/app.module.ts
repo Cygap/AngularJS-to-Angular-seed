@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
+import { DoBootstrap, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UpgradeModule } from '@angular/upgrade/static';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,13 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [UpgradeModule],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule implements DoBootstrap{ 
+constructor(private upgrade: UpgradeModule) {}
+
+ngDoBootstrap() {
+    this.upgrade.bootstrap(document.body, ['heroApp'], { strictDi: true });
+}
+}
