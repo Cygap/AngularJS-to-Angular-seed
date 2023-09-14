@@ -12,32 +12,49 @@
     map: {
       // our app is within the app folder
       'app': 'app',
-
+	  'tslib': 'npm:tslib/tslib.js',
       // angular bundles
-      '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
-      '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
-      '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
-      '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
-      '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
-      '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
-      '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+      '@angular/core': 'npm:@angular/core/fesm2022/core.mjs',
+	  '@angular/common': 'npm:@angular/common/fesm2022/common.mjs',
+      '@angular/common/http': 'npm:@angular/common/fesm2022/http.mjs',
+      '@angular/compiler': 'npm:@angular/compiler/fesm2022/compiler.mjs',
+      '@angular/platform-browser': 'npm:@angular/platform-browser/fesm2022/platform-browser.mjs',
+      '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/fesm2022/platform-browser-dynamic.mjs',
+      '@angular/router': 'npm:@angular/router/fesm2022/router.mjs',
+      '@angular/router/upgrade': 'npm:@angular/router/fesm2022/upgrade.mjs',
+      '@angular/forms': 'npm:@angular/forms/fesm2022/forms.mjs',
 
       // other libraries
-      //'rxjs':                      'npm:rxjs',
-      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
+      'rxjs': 'npm:rxjs/dist/cjs',
+      'rxjs/operators': 'npm:rxjs/dist/cjs/operators',
+      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
+	  'plugin-babel': 'npm:systemjs-plugin-babel/plugin-babel.js',
+      'systemjs-babel-build': 'npm:systemjs-plugin-babel/systemjs-babel-browser.js'
     },
-    // packages tells the System loader how to load when no filename and/or no extension
+    transpiler: 'plugin-babel',
+	// packages tells the System loader how to load when no filename and/or no extension
     packages: {
       app: {
         defaultExtension: 'js',
         meta: {
           './*.js': {
             loader: 'systemjs-angular-loader.js'
-          }
+          },
+		  '*.mjs': {
+			babelOptions: {
+			es2015: false
+		  }
         }
       },
-      rxjs: {
-        defaultExtension: 'js'
+      'rxjs': {
+        defaultExtension: 'js',
+        format: 'cjs',
+        main: 'index.js'
+      },
+      'rxjs/operators': {
+        defaultExtension: 'js',
+        format: 'cjs',
+        main: 'index.js'
       }
     }
   });
